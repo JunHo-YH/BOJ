@@ -1,19 +1,23 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		int i = scan.nextInt();
-		int copy = i;
-		int cnt = 1;
 
-		while (true) {
-			i = ((i % 10) * 10) + (((i / 10) + (i % 10)) % 10);
+		int n = scan.nextInt();
+		int[] arr = new int[n];
 
-			if (copy == i)
-				break;
-			cnt++;
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = scan.nextInt();
 		}
-		System.out.println(cnt);
+		int min = arr[0];
+		int max = arr[0];
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i] < min) min = arr[i];
+			if (arr[i] > max) max = arr[i];
+		}
+		System.out.println(min + " " + max);
+
 	}
 }
