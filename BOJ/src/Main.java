@@ -1,29 +1,22 @@
 import java.io.*;
 import java.util.*;
 
-
-
 public class Main {
 	public static void main(String[] args) throws IOException {
-		Scanner scan = new Scanner(System.in);
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String[] s = new String[scan.nextInt()];
-		s = br.readLine().split(" ");
-		int[] num= new int[s.length];
-		
-		for (int i = 0; i < s.length; i++) {
-			num[i] = Integer.parseInt(s[i]);
+
+		int N = Integer.parseInt(br.readLine());
+
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+
+		int index = 0;
+		int[] arr = new int[N];
+		while (st.hasMoreTokens()) {
+			arr[index] = Integer.parseInt(st.nextToken());
+			index++;
 		}
-		
-		Arrays.sort(num);
-		System.out.println(num[0] + " " + num[num.length-1]);
-		
-		
-		
-		
-		
-		
-		
-		
+		Arrays.sort(arr);
+		System.out.println(arr[0] + " " + arr[N - 1]);
+
 	}
 }
