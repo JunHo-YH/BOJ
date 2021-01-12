@@ -1,20 +1,29 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
-public class Main { // 2562
-	public static void main(String[] args) {
+
+
+public class Main {
+	public static void main(String[] args) throws IOException {
 		Scanner scan = new Scanner(System.in);
-		int[] arr = new int[9];
-		int max = 0;
-		int cnt = 0;
-		for (int i = 0; i < arr.length; i++) {
-			arr[i] = scan.nextInt();
-			
-			if (arr[i] > max) {
-				max = arr[i];
-				cnt = i + 1;
-			}
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String[] s = new String[scan.nextInt()];
+		s = br.readLine().split(" ");
+		int[] num= new int[s.length];
+		
+		for (int i = 0; i < s.length; i++) {
+			num[i] = Integer.parseInt(s[i]);
 		}
-		System.out.println(max + "\n" + cnt);
+		
+		Arrays.sort(num);
+		System.out.println(num[0] + " " + num[num.length-1]);
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 }
