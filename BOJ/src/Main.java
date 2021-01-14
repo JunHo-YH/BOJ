@@ -1,22 +1,28 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Main {// 2577
 	public static void main(String[] args) throws IOException {
+		int max = 0;
+		int index = 0;
+		int count = 0;
+
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		int N = Integer.parseInt(br.readLine());
-
-		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-
-		int index = 0;
-		int[] arr = new int[N];
-		while (st.hasMoreTokens()) {
-			arr[index] = Integer.parseInt(st.nextToken());
-			index++;
+		int[] arr = new int[9];
+		for (int i = 0; i < 9; i++) {
+			arr[i] = Integer.parseInt(br.readLine());
 		}
-		Arrays.sort(arr);
-		System.out.println(arr[0] + " " + arr[N - 1]);
+
+		for (int value : arr) {
+			count++;
+			if (value > max) {
+				max = value;
+				index = count;
+			}
+		}
+		System.out.println(max);
+		System.out.println(index);
 
 	}
 }
