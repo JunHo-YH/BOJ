@@ -1,28 +1,20 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+//import java.util.Scanner;
 
-public class Main {// 2577
+public class Main {
 	public static void main(String[] args) throws IOException {
-		int max = 0;
-		int index = 0;
-		int count = 0;
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		int[] arr = new int[10];
+		int val = Integer.parseInt(bf.readLine()) * Integer.parseInt(bf.readLine()) * Integer.parseInt(bf.readLine());
+		String str = String.valueOf(val);	
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-		int[] arr = new int[9];
-		for (int i = 0; i < 9; i++) {
-			arr[i] = Integer.parseInt(br.readLine());
+		for (int i = 0; i < str.length(); i++) {
+			arr[(str.charAt(i) - '0')]++;
 		}
-
-		for (int value : arr) {
-			count++;
-			if (value > max) {
-				max = value;
-				index = count;
-			}
+		for (int v : arr) {
+			System.out.println(v);
 		}
-		System.out.println(max);
-		System.out.println(index);
-
 	}
 }
