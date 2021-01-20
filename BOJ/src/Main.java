@@ -1,21 +1,22 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.*;
 
 public class Main {
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		boolean[] arr = new boolean[42];
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int[] arr = new int[scan.nextInt()];
 
-		for (int i = 0; i < 10; i++) {
-			arr[Integer.parseInt(br.readLine()) % 42] = true;
+		int max = 0;
+		double total = 0;
+		double score = 0;
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = scan.nextInt();
+			if (arr[i] > max)
+				max = arr[i];
 		}
+		for (int i = 0; i < arr.length; i++) {
+			total += (arr[i] / (double) max) * 100 / arr.length;
+		}
+		System.out.println(total);
 
-		int count = 0;
-		for (boolean value : arr) {
-			if (value)
-				count++;
-		}
-		System.out.println(count);
 	}
 }
