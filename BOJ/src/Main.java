@@ -3,27 +3,23 @@ import java.util.Scanner;
 public class Main {
 	public String solution(String str) {
 		String answer = "";
-		int m = Integer.MIN_VALUE, pos; // 최소값으로 초기화
-		while((pos = str.indexOf(' ')) != -1) {
-			String tmp = str.substring(0, pos);
-			int len = tmp.length();
-			if (len > m) {
+		int m = Integer.MIN_VALUE; // 최소값으로 초기화
+		String[] ans = str.split(" ");
+		for(String x : ans) {
+			int len = x.length();
+			if(len > m) {
 				m = len;
-				answer = tmp;
+				answer = x;
 			}
-			str = str.substring(pos+1);
-			if(str.length() > m) answer = str;
+			
 		}
 		return answer;
+	
 	}
-	
-	
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		String str = scan.nextLine();
+		String str = scan.nextLine(); // 한 줄 출력
 		Main T = new Main();
 		System.out.println(T.solution(str));
-	
-	
 	}
 }
