@@ -3,23 +3,21 @@ import java.util.Scanner;
 public class Main {
 	public String solution(String str) {
 		String answer = "";
-		int m = Integer.MIN_VALUE; // 최소값으로 초기화
-		String[] ans = str.split(" ");
-		for(String x : ans) {
-			int len = x.length();
-			if(len > m) {
-				m = len;
-				answer = x;
-			}
-			
+		for(int i = 0; i < str.length(); i++) {
+			answer += str.charAt(str.length()-i-1);
 		}
 		return answer;
-	
 	}
+
+
+
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		String str = scan.nextLine(); // 한 줄 출력
+		int n = scan.nextInt();
 		Main T = new Main();
-		System.out.println(T.solution(str));
+		for (int i = 1; i <= n; i++) {
+			String str = scan.next();
+			System.out.println(T.solution(str));
+		}
 	}
 }
