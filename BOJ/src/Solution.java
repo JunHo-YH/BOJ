@@ -29,6 +29,8 @@ public class Solution {
 	    }
 	    for (int i = 0; i < gift_cards.length; i++) {
 	    	wants[i] = scan.nextInt();
+	    	
+	    	
 	    }
 	       
 	    System.out.println(sol.solution(gift_cards, wants) );
