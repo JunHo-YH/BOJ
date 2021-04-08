@@ -25,6 +25,6 @@ public class Main {
 		for(String x : T.solution(n, str)) {
 			System.out.println(x);
 		}
-		
+		  
 	}
 }
