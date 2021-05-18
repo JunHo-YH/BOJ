@@ -1,29 +1,34 @@
 import java.util.Scanner;
 
 public class Main {
-	public int solution(String str, char c) {
-		int answer = 0;
+	public String solution(String str) {
 		
-		str = str.toUpperCase();
-		c = Character.toUpperCase(c);
-		if(str.length() < 100) {
-			for(int i = 0; i < str.length(); i++) {
-				if(str.charAt(i) == c) {
-					answer++;
-				}
+		String[] arrStr = str.split(" ");
+		int strLen = 0;
+		for(String len : arrStr) {
+			if(len.length() > strLen) {
+				strLen = len.length();				
 			}
-			return answer;
-		}else {
-			return -1;
+			
 		}
+		for(String len : arrStr) {
+			if(len.length() == strLen) {
+				str = len;
+			}
+		}
+		
+		
+		return str;
 	}
+	
 	public static void main(String[] args) {
 		Main m = new Main();
 		Scanner scan = new Scanner(System.in);
-		String str = scan.next();
-		char c = scan.next().charAt(0);
+		String str = scan.nextLine();
+		if(str.length() < 100) {
+			System.out.println(m.solution(str));
+		}
 		
-		System.out.println(m.solution(str, c));
 	}
 
 
