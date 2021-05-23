@@ -1,10 +1,8 @@
-function solution(student) {
-    answer = student / 12;
-    if(student % 12 >= 1) {
-        parseInt(answer++);
-
+function solution(n) {
+    let sum = 0;
+    for(var i = 1; i <= n; i++) {
+        sum += i;
     }
-    return parseInt(answer);
+    return sum;
 }
-
-console.log(solution(178))
+console.log(solution(10));
