@@ -1,10 +1,12 @@
-function solution(str, alph) {
+function solution(str) {
     let answer = 0;
     for(let x of str) {
-        if(x === alph) answer++;
+        if(x.match(/[A-Z]/)) {
+            answer++;
+        }
     }
+    
     return answer;
 }
-let str = "COMPUTERPROGRAMMING";
-let alph = "R";
-console.log(solution(str, alph));
+let str = "KoreaTimeGood";
+console.log(solution(str));
