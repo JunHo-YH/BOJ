@@ -1,7 +1,11 @@
 function solution(str) {
     let answer = "";
-    answer = str.replace(/A/g, '#')
+    for(let x of str) {
+        if(x === 'A') answer += '#'
+        else answer += x;
+    }
     return answer;
+
 
 }
 let str = "BANANA";
