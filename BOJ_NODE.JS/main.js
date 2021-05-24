@@ -1,12 +1,10 @@
-function solution(str) {
-    let answer = "";
+function solution(str, alph) {
+    let answer = 0;
     for(let x of str) {
-        if(x === 'A') answer += '#'
-        else answer += x;
+        if(x === alph) answer++;
     }
     return answer;
-
-
 }
-let str = "BANANA";
-console.log(solution(str))
+let str = "COMPUTERPROGRAMMING";
+let alph = "R";
+console.log(solution(str, alph));
