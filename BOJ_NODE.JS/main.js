@@ -1,12 +1,10 @@
-function solution(str) {
-    let answer = 0;
-    let pos = str.indexOf('k');
-    while(pos !== -1) {
-        answer++;
-        pos = str.indexOf('k', pos+1);
-    }   
+function solution(arr) {
+    let answer = [];
+    for(let i = 0; i < arr.length; i++) {
+        if(arr.indexOf(arr[i]) === i) answer.push(arr[i]);  
 
+    }
     return answer;
 }
-let str = "ksekkset";
-console.log(solution(str));
+let arr = ["good", "time", "good", "time", "student"];
+console.log(solution(arr));
