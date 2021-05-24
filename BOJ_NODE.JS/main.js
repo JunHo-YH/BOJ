@@ -1,9 +1,9 @@
 function solution(arr) {
-    let answer = [];
-    for(let i = 0; i < arr.length; i++) {
-        if(arr.indexOf(arr[i]) === i) answer.push(arr[i]);  
-
-    }
+    let answer;
+    answer = arr.filter((v,i) => {
+        if(arr.indexOf(v) === i) return v;
+    });
+    
     return answer;
 }
 let arr = ["good", "time", "good", "time", "student"];
