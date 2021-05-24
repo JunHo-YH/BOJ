@@ -1,10 +1,14 @@
-function solution(str) {
+function solution (arr) {
     let answer = "";
-    for(let x of str) {
-        if(x === x.toLowerCase()) answer += x.toUpperCase();
-        else answer += x.toLowerCase();
+    let len = Number.MIN_SAFE_INTEGER;
+    for(let x of arr) {
+        if(x.length > len) len = x.length;
     }
+    for(let x of arr) {
+        if(x.length === len) answer = x;
+    }
+
     return answer;
 }
-let str = "StuDY";
-console.log(solution(str));
+let arr = ['teacher', 'time', 'student', 'beautiful', 'good'];
+console.log(solution(arr));
