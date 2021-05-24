@@ -1,5 +1,4 @@
 function solution(arr) {
-    let answer = arr;
     let sum = arr.reduce((a,b)=>a+b, 0);
     for(let i = 0; i < arr.length-1; i++) {
         for(let j = i+1; j < arr.length; j++) {
@@ -9,7 +8,7 @@ function solution(arr) {
             }
         }
     }
-    return answer;    
+    return arr;    
 
 }
 
