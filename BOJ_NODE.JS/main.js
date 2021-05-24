@@ -1,8 +1,14 @@
-function solution(n) {
+function solution(arr) {
     let sum = 0;
-    for(var i = 1; i <= n; i++) {
-        sum += i;
-    }
-    return sum;
-}
-console.log(solution(10));
+    let oddArr = [];
+    arr.forEach(num => {
+        if(num % 2 == 1 ) {
+            sum += num;
+            oddArr.push(num);
+        };
+    });
+    console.log(sum);
+    console.log(Math.min(...oddArr));
+};
+let arr = [12,77,38,41,53,92,85];
+solution(arr);
