@@ -1,9 +1,11 @@
 function solution(str) {
-    let answer ="";
-    let mid = Math.floor(str.length / 2) // 몫만 출력
-    if(str.length %2 === 1) answer = s.substr(mid, 1);
-    else answer = str.substr(mid-1, 2);
+    let answer = "";
+    // console.log(str.indexOf('k', 1));
+    for(let i = 0; i < str.length; i++) {
+        console.log(str[i], i, str.indexOf(str[i]));
+        if(str.indexOf(str[i]) === i) answer += str[i];
+    }
     return answer;
 }
-let str = "good";
+let str = "ksekkset";
 console.log(solution(str));
