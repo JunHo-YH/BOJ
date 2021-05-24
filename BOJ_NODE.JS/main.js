@@ -1,19 +1,10 @@
-function solution(arr) {
-    let answer = [];
-    let sum = 0;
-    for(let x of arr) {
-        if(x % 2 === 1) {
-            sum += x;
-            answer.push(x);
-        }
+function solution(day, cars) {
+    let ban = 0;
+    for(let x of cars) {
+        if(x % 10 === day) ban++;
     }
-
-    console.log(sum);
-    console.log(Math.min(...answer));
-
-
-
+    return ban;
 }
-
-let arr = [12,77,38,41,53,92,85];
-solution(arr);
+day = 0;
+cars = [12,20,54,30,87,91,30];
+console.log(solution(day, cars));
