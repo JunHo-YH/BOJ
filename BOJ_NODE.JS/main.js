@@ -1,12 +1,13 @@
 function solution(str) {
-    let answer = 0;
+    let answer = "";
     for(let x of str) {
-        let num = x.charCodeAt();
-        if(num >= 65 && num <= 90) answer++;
-        // if(x === x.toUpperCase()) answer++;
+        let num = x.charCodeAt(); //아스키 번호로 변환
+        if(num >= 97 && num <= 122) answer += String.fromCharCode(num-32);
+        else answer += x;
+        // if(x === x.toLowerCase()) answer += x.toUpperCase();
+        // else answer += x;
     }
-    
     return answer;
 }
-let str = "KoreaTimeGood";
+let str = "ItisTimeToStudy";
 console.log(solution(str));
