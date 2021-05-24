@@ -2,11 +2,12 @@ function solution (arr) {
     let answer = "";
     let len = Number.MIN_SAFE_INTEGER;
     for(let x of arr) {
-        if(x.length > len) len = x.length;
+        if(x.length > len) {
+            len = x.length;
+            answer = x;
+        }
     }
-    for(let x of arr) {
-        if(x.length === len) answer = x;
-    }
+    
 
     return answer;
 }
