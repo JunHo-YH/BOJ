@@ -1,15 +1,13 @@
 function solution(s) {
-    let answer = 0, score=0;;
-    for(let x of s) {
-        if(x === 1) {
-            score++;
-            answer += score;
-        }else {
-            score = 0;
+    let n = s.length;
+    let answer = Array.from({length:n}, ()=>1);
+    for(let i = 0; i < n; i++) {
+        for(k = 0; k < n; k++) {
+            if(s[i] < s[k]) answer[i]++;
         }
     }
 
     return answer;
 }
-let score = [1,0,1,1,1,0,0,1,1,0];
+let score = [92,92,92,100,76];
 console.log(solution(score));
