@@ -1,13 +1,29 @@
-function solution(s) {
-    let n = s.length;
-    let answer = Array.from({length:n}, ()=>1);
+function solution(arr) {
+    let answer = Number.MIN_SAFE_INTEGER;
+    let n = arr.length;
+    let sum1 = sum2 = 0;
     for(let i = 0; i < n; i++) {
-        for(k = 0; k < n; k++) {
-            if(s[i] < s[k]) answer[i]++;
+        sum1 = sum2 = 0;
+        for(let j = 0; j < n; j++) {
+            sum1 += arr[i][j]; // 행 총합
+            sum2 += arr[j][i]; // 열 총합
         }
+        answer = Math.max(answer, sum1, sum2);
+        
     }
+    sum1 = sum2 = 0;
+    // 대각선 총합 구하기
+    for(let i = 0; i < n; i++) {
+        sum1 += arr[i][i];
+        sum2 += arr[i][n-i-1];
+    }
+    answer = Math.max(answer, sum1, sum2);
 
     return answer;
 }
-let score = [92,92,92,100,76];
+let score = [[10,13,10,12,15],
+             [12,39,30,23,11],
+             [11,25,50,53,15],
+             [19,27,29,37,27],
+             [19,13,30,13,19]];
 console.log(solution(score));
