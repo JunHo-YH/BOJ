@@ -1,14 +1,15 @@
-function solution(A, B) {
-    let answer = "";
-    for(let i = 0; i < A.length; i++) {
-        if(A[i] === B[i]) answer += 'D' + ' ';
-        else if(A[i] === 1 && B[i] === 3) answer +='A' + ' ';
-        else if(A[i] === 2 && B[i] === 1) answer +='A' + ' ';
-        else if(A[i] === 3 && B[i] === 2) answer +='A' + ' ';
-        else answer += 'B' + ' ';
+function solution(s) {
+    let answer = 0, score=0;;
+    for(let x of s) {
+        if(x === 1) {
+            score++;
+            answer += score;
+        }else {
+            score = 0;
+        }
     }
+
     return answer;
 }
-let A = [2,3,3,1,3];
-let B = [1,1,2,2,3];
-console.log(solution(A,B));
+let score = [1,0,1,1,1,0,0,1,1,0];
+console.log(solution(score));
