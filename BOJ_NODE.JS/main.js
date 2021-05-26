@@ -1,8 +1,7 @@
 function solution(str) {
-    let answer = "Yes";
-    str = str.toLowerCase().replace(/[^a-z]/g, '');
-    if(str.split('').reverse().join('') !== str) return "NO"; 
-    return answer;
+    str = str.toLowerCase().replace(/[^0-9]/g,'');
+    return answer = parseInt(str);
+    
 }
-let str = "found7, time: study; Yduts; emit, 7Dnuof";
+let str = "g0en2T0s8eSoft";
 console.log(solution(str));
