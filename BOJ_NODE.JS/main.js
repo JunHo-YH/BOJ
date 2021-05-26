@@ -1,8 +1,9 @@
 function solution(str) {
-    let answer = "YES";
-    str = str.toUpperCase();
-    if(str.split('').reverse().join('') !== str) return "NO";
+    let answer = "Yes";
+    let arr2 = [];
+    str = str.toLowerCase().replace(/[^a-z]/g, '');
+    if(str.split('').reverse().join('') !== str) return "NO"; 
     return answer;
 }
-str ="goooG";
+let str = "found7, time: study; Yduts; emit, 7Dnuof";
 console.log(solution(str));
