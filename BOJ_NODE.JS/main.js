@@ -1,26 +1,19 @@
-function solution(str, t) {
-    let answer = [];
-    let p = 1000;
-    for(let x of str) {
-        if(x === t) {
-            p = 0;
-            answer.push(p);
-        } else {
-            p++;
-            answer.push(p);
-        }
-    }
-    p = 1000;
-    for(let i = str.length-1; i >=0; i--) {
-        if(str[i] === t) p = 0;
-        else {
-            p++;
-            answer[i] = Math.min(answer[i], p);
-        }
-    }
+function solution(str) {
+    let answer = str[0], cnt = 1;
 
+    for(let i = 1; i < str.length; i++) {
+        if(str[i] === str[i-1]) {
+            cnt++
+        }else {
+            if(cnt > 1){
+                answer+= cnt;
+            }
+            cnt=1;
+        }
+        answer += str[i]
+    }
+    
     return answer;
 }
-let str = "teachermode";
-let t = "e"; 
-console.log(solution(str,t));
+let str = "KKHSSSSSSSE";
+console.log(solution(str));
