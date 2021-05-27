@@ -1,17 +1,33 @@
-function solution(str) {
-    let answer="";
-    let cnt = 1;
-    str += " "; // 마지막 문자를 비교하기 위한 공백
-    
-    for(let i = 0; i < str.length; i++) {
-        if(str[i] === str[i+1]) cnt++;
-        else {
-            answer += str[i];
-            if(cnt > 1) answer += String(cnt);
-            cnt = 1;
-        }
+function solution(arr) {
+    let nArr = arr;
+    let answer = 0, sum  = 0;
+    let sArr = [];
+    let cnt = 0;
+    for(let i = 0; i < arr.length; i++) {
+        while(arr[i] > 0) {
+            sum += arr[i] % 10;
+            arr[i] /= 10;
+
+        }  
+        sArr.push(parseInt(sum));
+        for(let x of sArr) {
+            if(x === Math.max(...sArr)) {
+                cnt++
+            }
+            
+        }    
+           
+        sum = 0;
+    }
+    console.log("================");
+    if(cnt >= 2) {
+        first = sArr.indexOf(Math.max(...sArr))
+        last = sArr.lastIndexOf(Math.max(...sArr))
+        // answer = arr[first] > arr[last] ? arr[first] : arr[last]
+        console.log(nArr[0])
     }
     return answer;
+
 }
-let str = "KKHSSSSSSSE";
-console.log(solution(str));
+let arr = [128,460,603,40,521,137,123];
+console.log(solution(arr));
