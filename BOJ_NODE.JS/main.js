@@ -1,15 +1,17 @@
 function solution(arr) {
-    let answer = [];
-    let sum = 0, min = Number.MAX_SAFE_INTEGER;
-    for(let x of arr) {
-        if(x % 2 === 1) {
-            sum += x;
-            if(x < min) min = x;
+    let answer = arr;
+    let sum = arr.reduce((a,b)=>a+b, 0)
+    for(let i = 0; i < arr.length-1; i++) {
+        for(let k = i+1; k < arr.length; k++) {
+            if(sum - (arr[i] + arr[k]) === 100) {
+                arr.splice(k,1);
+                arr.splice(i,1);
+            }
         }
     }
-    answer.push(sum);
-    answer.push(min);
+
     return answer;
 }
-let arr = [12,77,38,41,53,92,85];
+let arr = [20,7,23,19,10,15,25,8,13];
 console.log(solution(arr));
+
