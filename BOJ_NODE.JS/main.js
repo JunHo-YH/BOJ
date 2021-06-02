@@ -1,12 +1,8 @@
-function solution(a,b,c) {
-    let answer ="Yes", max;
-    let sum = a+b+c;
-    if(a > b) max = a;
-    else max = b;
-    if(c > b) max = c;
-    if((sum-max) < max) answer = "NO";
-
-    return answer;
+function solution(n) {
+    let sum = 0;
+    for(let i = 1; i <= n; i++) {
+        sum += i;
+    }
+    return sum;
 }
-
-console.log(solution(13,33,17));
+console.log(solution(10));
