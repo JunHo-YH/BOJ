@@ -1,8 +1,12 @@
 function solution(a,b,c) {
-    let answer;
-    if(a < b) answer = a;
-    else answer = b;
-    if(c < b) answer = c;
+    let answer ="Yes", max;
+    let sum = a+b+c;
+    if(a > b) max = a;
+    else max = b;
+    if(c > b) max = c;
+    if((sum-max) < max) answer = "NO";
+
     return answer;
 }
-console.log(solution(6,5,11));
+
+console.log(solution(13,33,17));
