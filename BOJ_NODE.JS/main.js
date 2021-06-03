@@ -1,10 +1,11 @@
-function solution(str, find) {
+function solution(str) {
     let answer = 0;
     for(let x of str) {
-        if(x === find) answer++;
+        let num = x.charCodeAt(); // ASCII 번호로 치환
+        if(num >= 65 && num <= 90) answer++;
+        // if(x === x.toUpperCase()) answer++;
     }
     return answer;
 }
-let str = "COMPUTERPROGRAMMING";
-let find = "R";
-console.log(solution(str,find));
+let str = "KoreaTimeGood";
+console.log(solution(str));
