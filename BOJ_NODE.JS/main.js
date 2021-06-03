@@ -1,11 +1,11 @@
 function solution(str) {
     let answer = "";
-    for(let x of str) {
-        if(x === x.toLowerCase()) answer += x.toUpperCase();
-        else answer += x.toLowerCase();
-    }
+
+    for(let i = 0; i < str.length; i++) {
+        if(i === str.indexOf(str[i])) answer +=str[i];
+    };
     return answer;
 }
 
-let str = "StuDY";
+let str = "ksekkset"
 console.log(solution(str));
