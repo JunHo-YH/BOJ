@@ -1,11 +1,12 @@
 function solution(str) {
-    let answer = 0;
+    let answer = "";
     for(let x of str) {
-        let num = x.charCodeAt(); // ASCII 번호로 치환
-        if(num >= 65 && num <= 90) answer++;
-        // if(x === x.toUpperCase()) answer++;
+        let num = x.charCodeAt(); // ASCII NUMBER
+        if(num >= 97 && num <= 122) answer += String.fromCharCode(num - 32);
+        else answer += x;
     }
+
     return answer;
 }
-let str = "KoreaTimeGood";
+let str = "ItisTimeToStudy";
 console.log(solution(str));
