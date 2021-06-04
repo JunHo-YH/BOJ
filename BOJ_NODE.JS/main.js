@@ -1,11 +1,9 @@
-function solution(str) {
-    let answer = "";
-
-    for(let i = 0; i < str.length; i++) {
-        if(i === str.indexOf(str[i])) answer +=str[i];
-    };
+function solution(arr) {
+    let answer;
+    answer = arr.filter((v,i)=>{
+        if(arr.indexOf(v) === i) return v;
+    })
     return answer;
 }
-
-let str = "ksekkset"
-console.log(solution(str));
+let arr = ['good', 'time', 'good', 'time', 'student'];
+console.log(solution(arr));
