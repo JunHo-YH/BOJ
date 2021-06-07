@@ -1,10 +1,14 @@
 function solution(arr) {
-    let answer = [];
-    answer.push(arr[0]);
-    for(let i = 1; i < arr.length; i++) {
-        if(arr[i] > arr[i-1]) answer.push(arr[i]);
-    }    
+    let answer = 1;
+    let tall = arr[0];
+    for(let i = 1; i < arr.length; i++) { 
+        if(arr[i] > tall) {
+            tall = arr[i]; // 가장 큰 키 갱신
+            answer++;
+        }        
+    } 
+    
     return answer;
 }
-let arr = [7,3,9,5,6,12];
+let arr = [130,135,148,140,145,150,150,153];
 console.log(solution(arr));
