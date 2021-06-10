@@ -1,6 +1,6 @@
-function solution(arr) {
-    let answer;
-    return answer;
+function solution() {
+
 }
-let arr = [130,135,148,140,145,150,150,153];
-console.log(solution(arr));
+let arr1 = [2,3,3,1,3];
+let arr2 = [1,1,2,2,3];
+console.log(solution())
