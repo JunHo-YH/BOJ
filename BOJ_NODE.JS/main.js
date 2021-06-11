@@ -1,29 +1,9 @@
-function solution(arr) {
-    let answer = 0;
-    let n = arr.length;
-    let dx = [-1,0,1,0]; // 행 이동
-    let dy = [0,1,0,-1]; // 열 이동
-    for(let i = 0; i < n; i++) {
-        for(let j = 0; j < n; j++) {
-            let flag = 1;
-            for(let k = 0; k < dx.length; k++) {
-                let nx = i + dx[k];
-                let ny = j + dy[k];
-                if(nx >= 0 && nx < n && ny >= 0 && ny < n && arr[nx][ny] >= arr[i][j]) {
-                    flag = 0;
-                    break;
-                } 
-            }
-            if(flag) answer++;
-        }
-    }
+function solution(str) {
+    let answer="Yes";
+    str = str.toUpperCase();
+    str = str.replace(/[^A-Z]/g,'');// 정규식으로 문자열만 남기기
+    if(str.split('').reverse().join('') !== str) return "NO";
     return answer;
-
 }
-    
-let arr=[[5, 3, 7, 2, 3], 
-         [3, 7, 1, 6, 1],
-         [7, 2, 5, 3, 4],
-         [4, 3, 6, 4, 1],
-         [8, 7, 3, 5, 2]];
-            console.log(solution(arr));
+let str="found7, time: study; Yduts; emit, 7Dnuof";
+console.log(solution(str));
