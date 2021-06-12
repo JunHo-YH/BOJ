@@ -1,16 +1,19 @@
-function solution(arr) {
-    let answer, max = Number.MIN_SAFE_INTEGER;
-    for(let x of arr) {
-        let sum = x.toString().split('').reduce((a,b)=>a + Number(b), 0)
-        if(sum > max) {
-            max = sum;
-            answer = x;
-        }else if(sum === max) {
-            if(x > answer) answer = x;
-        }
+function isPrime(num) {
+    if(num === 1) return false;
+    for(let i = 2; i < parseInt(Math.sqrt(num)); i++) {
+        if(num % i === 0) return false;
+    }
+    return true;
+}
 
+
+function solution(arr) {
+    let answer = [];
+    for(let x of arr) {
+        let res = Number(x.toString().split('').reverse().join(''));
+        if(isPrime(res)) answer.push(res);
     }
     return answer;
 }
-let arr = [128,460,603,40,521,137,123];
+let arr=[32, 55, 62, 20, 250, 370, 200, 30, 100];
 console.log(solution(arr));
