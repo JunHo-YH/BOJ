@@ -1,20 +1,20 @@
-function solution(m, product) {
-    let answer = 0;
-    let n = product.length;
-    product.sort((a ,b) => (a[0]+a[1])-(b[0]+b[1])); // 오름차순 정렬
-    for(let i = 0; i < n; i++) {
-        let money = m - (product[i][0] / 2 + product[i][1]);
-        let cnt = 1;
-        for(let j = 0; j < n; j++) {
-            if(j !== i && (product[j][0] + product[j][1]) > money ) break;
-            if(j !== i && (product[j][0] + product[j][1]) <= money) {
-                money -= (product[j][0] + product[j][1]);
-                cnt++;
+function solution(n, k, card) {
+    let answer;
+    let tmp = new Set(); // 중복제거 되는 Set자료구조
+    // console.log(tmp)
+    for(let i = 0; i < n-2; i++) {
+        for(let j = i+1; j < n-1; j++) {
+            for(let k = j+1; k < n; k++) {
+                tmp.add(card[i] + card[j] + card[k]);
             }
         }
-        answer = Math.max(answer, cnt);
     }
+    let a = Array.from(tmp); // 내림차순 정렬
+    console.log(a)
+    answer = a[k-1]
+
     return answer;
 }
-let arr=[[6, 6], [2, 2], [4, 3], [4, 5], [10, 3]];
-console.log(solution(28,arr));
+    let arr=[13, 15, 34, 23, 45, 65, 33, 11, 26, 42];
+console.log(solution(10, 3, arr));
+
