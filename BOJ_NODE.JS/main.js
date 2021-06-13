@@ -1,16 +1,14 @@
-function solution(m, arr1) {
-    let answer = 0, lt = 0, sum = 0;
-    for(let rt = 0; rt < arr1.length; rt++) {
-        sum += arr1[rt];
-        if(sum === m) answer++;
-        while(sum >= m) {
-            sum -= arr1[lt++];
-            if(sum === m) answer++;
-        }
+function solution(k, arr) {
+    let answer, sum = 0;
+    for(let i = 0; i < k; i++) sum += arr[i];
+    answer = sum;
+
+    for(let i = k; i < arr.length; i++) {
+        sum += (arr[i] - arr[i-k]);
+        answer = Math.max(answer, sum);
     }
 
     return answer;
-};
-
-let a = [1,2,1,3,1,1,1,2]
-console.log(solution(6, a));
+}
+let a=[12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+console.log(solution(3, a));
