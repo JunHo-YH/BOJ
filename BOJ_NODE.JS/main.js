@@ -1,22 +1,24 @@
-function solution(str) {
-    let answer;
-    let sH = new Map(); // Map 자료구조
-    for(let x of str) {
-        if(sH.has(x)) sH.set(x, sH.get(x)+1);
-        else sH.set(x, 1);
-    }
-
-    let max = Number.MIN_SAFE_INTEGER;
-    for(let [key, val] of sH) {
-        if(val > max) {
-            max = val;
-            answer = key;
+function solution(arr) {
+    let answer = 0, max = Number.MIN_VALUE;
+    for(let x of arr) {
+        let sum = 0, tmp = x;
+        while(tmp) {
+            sum += (tmp % 10);
+            tmp = Math.floor(tmp / 10);
+        }
+        if(sum > max) {
+            max = sum;
+            answer = x;
+        }else if(sum === max) {
+            if(x > answer) answer = x;
         }
     }
 
 
-    return answer;  
+
+    return answer;
 }
 
-let str="BACBACCACCBDEDE";
-console.log(solution(str));
+
+let arr=[128, 460, 603, 40, 521, 137, 123];
+console.log(solution(arr));
