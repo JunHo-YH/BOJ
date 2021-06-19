@@ -1,15 +1,21 @@
-function solution(k, arr) {
-    let answer, sum = 0;
-    for(let i = 0; i < k; i++) {
-        sum += arr[i];
+function solution(str) {
+    let answer = "";
+    let sh = new Map();
+    for(let x of str) {
+        if(sh.has(x)) sh.set(x, sh.get(x) + 1);
+        else sh.set(x, 1);
     }
-    answer = sum;
-    for(let i = k; i < arr.length; i++) {
-        sum += (arr[i] - arr[i - k]);
-        answer = Math.max(answer, sum);
+    let max = Number.MIN_SAFE_INTEGER;
+    for(let [key, val] of sh) {
+        if(val > max) {
+            max = val;
+            answer = key;
+        }
+
     }
+
     return answer;
 }
 
-let a=[12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
-console.log(solution(3, a));
+let str="BACBACCACCBDEDE";
+console.log(solution(str));
