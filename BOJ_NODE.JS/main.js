@@ -1,18 +1,13 @@
 function solution(str) {
-    let answer = "YES";
+    let answer;
     let stack = [];
-    if(str.length % 2 === 1) return "NO";
     for(let x of str) {
-        if(x === '(') stack.push(x);
-        else {
-            if(stack.length === 0) return "NO";
-            stack.pop();
-        } 
-        if(stack.length > 0) return "NO";
+        if(x === ')') {
+            while(stack.pop() !== '('); // )이전의 (까지 제거
+        } else stack.push(x);
     }
-
-
+    answer = stack.join('');
     return answer;
 }
-let a="(()(()))(()";
-console.log(solution(a));
+let str="(A(BC)D)EF(G(H)(IJ)K)LM(N)";
+console.log(solution(str));
