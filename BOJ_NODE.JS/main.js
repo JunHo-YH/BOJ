@@ -1,12 +1,15 @@
-function solution(n, k) {
-    let answer;
-    let queue = Array.from({length: n}, (v, i) => i+1);
-    while(queue.length !== 1) {
-        for(let i = 1; i < k; i++) queue.push(queue.shift());
-        queue.shift(); // 3을 외치면 제외 !
+function solution(need, plan) {
+    let answer = "YES";
+    let queue = need.split('');
+    for(let x of plan) {
+        if(queue.includes(x)) {
+            if(x !== queue.shift()) return 'NO';
+        }
     }
-    answer = queue.shift();
+    
     return answer;
 }
 
-console.log(solution(8, 3));
+let a="CBA";
+let b="CBDGE";
+console.log(solution(a, b));
