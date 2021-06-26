@@ -1,42 +1,36 @@
+import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.StringTokenizer;
-
 
 public class Main {
-	public String solution(String str) {
-		String answer = "";
-		int max = Integer.MIN_VALUE, pos;
-		
-		while((pos = str.indexOf(" ")) != -1) {
-			String tmp = str.substring(0, pos);
-			int len = tmp.length();
-			if(len > max) {
-				max = len;
-				answer = tmp;
+	public ArrayList<String> solution(int n, String[] str) {
+		ArrayList<String> answer = new ArrayList<String>();
+		for (String x : str) {
+			char[] s = x.toCharArray(); // 문자열을 문자 배열로 변환
+			int lt = 0, rt = x.length() - 1;
+			while (lt < rt) {
+				char tmp = s[lt];
+				s[lt] = s[rt];
+				s[rt] = tmp;
+				lt++;
+				rt--;
 			}
-			str = str.substring(pos+1);
-			if(str.length() > max) answer = str;
-		
+			String tmp = String.valueOf(s);
+			answer.add(tmp);
+
 		}
-//		while((pos = str.indexOf(' ')) != -1) {
-//			String tmp = str.substring(0, pos);
-//			int len = tmp.length();
-//			if(len > max) {
-//				max = len;
-//				answer = tmp;
-//			}
-//			str = str.substring(pos+1);
-//			System.out.println(str);
-//		}
-//		
 		return answer;
 	}
 
 	public static void main(String[] args) {
-
 		Main T = new Main();
-		Scanner in = new Scanner(System.in);
-		String str = in.nextLine();
-		System.out.println(T.solution(str));
+		Scanner scan = new Scanner(System.in);
+		int n = scan.nextInt();
+		String[] str = new String[n];
+		for (int i = 0; i < n; i++) {
+			str[i] = scan.next();
+		}
+		for (String s : T.solution(n, str)) {
+			System.out.println(s);
+		}
 	}
 }
