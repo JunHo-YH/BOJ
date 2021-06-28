@@ -1,22 +1,21 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-	public String solution(String str) {
+	public int solution(String str) {
 		String answer = "";
-		for(int i = 0; i < str.length(); i++) {
-			System.out.println(str.charAt(i) + " " + i + " " + str.indexOf(str.charAt(i)));
-			if(i == str.indexOf(str.charAt(i))) answer+=str.charAt(i);
+		for(char x : str.toCharArray()) {
+			if(Character.isDigit(x)) {
+				answer += x;
+			}
 		}
+		return Integer.parseInt(answer);
 		
-		
-		return answer;
 	}
 	public static void main(String[] args) {
 		Main T = new Main();
 		Scanner scan = new Scanner(System.in);
-		String str = scan.next();
+		String str = scan.nextLine();
 		System.out.println(T.solution(str));
-	
 	}
 }
+	
