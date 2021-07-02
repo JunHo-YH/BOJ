@@ -1,19 +1,21 @@
 import java.util.*;
 
 public class Main {
-	public char solution(int n, String str) {
-		char answer = ' ';
-		HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-		for(char x : str.toCharArray()) {
-			map.put(x, map.getOrDefault(x, 0)+1);
+	public ArrayList<Integer> solution(int n, int m, int[] arr) {
+		ArrayList<Integer> answer = new ArrayList<Integer>();
+		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+		for(int i = 0; i < m-1; i++) {
+			map.put(arr[i], map.getOrDefault(arr[i], 0)+1);
 		}
-		int max = Integer.MIN_VALUE;
-		for(char key : map.keySet()) {
-			if(map.get(key) > max) {
-				max = map.get(key);
-				answer = key;
-			}
+		int lt = 0;
+		for(int rt = m-1; rt < n; rt++) {
+			map.put(arr[rt], map.getOrDefault(arr[rt], 0)+1);
+			answer.add(map.size());
+			map.put(arr[lt], map.get(arr[lt])-1);
+			if(map.get(arr[lt]) == 0) map.remove(arr[lt]);
+			lt++;
 		}
+		
 		return answer;
 	}
 
@@ -21,7 +23,14 @@ public class Main {
 		Main T = new Main();
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
-		String str = sc.next();
-		System.out.println(T.solution(n, str));
+		int m = sc.nextInt();
+		int[] arr = new int[n];
+
+		for (int i = 0; i < n; i++) {
+			arr[i] = sc.nextInt();
+		}
+		for (int x : T.solution(n, m, arr)) {
+			System.out.print(x + " ");
+		}
 	}
 }
