@@ -3,23 +3,18 @@ import java.util.*;
 public class Main {
 	public int solution(String str) {
 		int answer = 0;
-		int sum = 0;
-		int lt = 0, rt = 0;
-		Stack<Integer> stack = new Stack<Integer>();
-		for(char x : str.toCharArray()) {
-			if(Character.isDigit(x)) stack.push(x-48);
+		Stack<Character> stack = new Stack<Character>();
+		for(int i = 0; i < str.length(); i++) {
+			if(str.charAt(i) == '(') stack.push('(');
 			else {
-				rt = stack.pop();
-				lt = stack.pop();
-				if(x == '+') stack.push(lt + rt);
-				else if(x == '-') stack.push(lt - rt);
-				else if(x == '*') stack.push(lt * rt);
-				else if(x == '/') stack.push(lt / rt);
-			
-			
-			} 
+				stack.pop();
+				if(str.charAt(i-1) == '(') answer += stack.size();
+//				else if(str.charAt(i-1) == ')') answer++;
+				else answer++;
+			}
 		}
-		return answer = stack.get(0);	
+		return answer;
+		
 
 	}
 
