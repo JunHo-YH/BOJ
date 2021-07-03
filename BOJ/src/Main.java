@@ -1,26 +1,32 @@
 import java.util.*;
 
 public class Main {
-	public String solution(String str) {
-		String answer = "";
-		Stack<Character> stack = new Stack<Character>(); // Char형 스택 선언
+	public int solution(String str) {
+		int answer = 0;
+		int sum = 0;
+		int lt = 0, rt = 0;
+		Stack<Integer> stack = new Stack<Integer>();
 		for(char x : str.toCharArray()) {
-			stack.push(x);
-			if(x == ')') {
-				while(stack.pop() != '(');
-			}
+			if(Character.isDigit(x)) stack.push(x-48);
+			else {
+				rt = stack.pop();
+				lt = stack.pop();
+				if(x == '+') stack.push(lt + rt);
+				else if(x == '-') stack.push(lt - rt);
+				else if(x == '*') stack.push(lt * rt);
+				else if(x == '/') stack.push(lt / rt);
+			
+			
+			} 
 		}
-		for(int i = 0; i < stack.size(); i++) answer += stack.get(i);
-		return answer;
-		}
-		
-		
-		
-		public static void main(String[] args) {
+		return answer = stack.get(0);	
+
+	}
+
+	public static void main(String[] args) {
 		Main M = new Main();
 		Scanner sc = new Scanner(System.in);
 		String str = sc.next();
-		
 		System.out.println(M.solution(str));
 	}
 }
