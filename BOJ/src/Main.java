@@ -1,13 +1,14 @@
 import java.util.*;
 
 public class Main {
-	public String solution(int n, int[] arr) {
-		String answer = "U";
-		Queue<Integer> Q = new LinkedList<Integer>();
-		for(int i = 0; i < arr.length; i++) Q.offer(arr[i]);
-		while(!Q.isEmpty()) {
-			if(Q.contains(Q.poll())) return "D";
+	public ArrayList<Integer> solution(int n, int[] arr) {
+		ArrayList<Integer> answer = new ArrayList<Integer>();
+		int[] tmp = arr.clone();// arr에는 영향을 주지 않는 배열 생성
+		Arrays.sort(tmp);// 오름차순 정렬
+		for(int i = 0; i < n; i++) {
+			if(arr[i] != tmp[i]) answer.add(i+1);
 		}
+		
 		return answer;
 
 	}
@@ -20,6 +21,6 @@ public class Main {
 		for (int i = 0; i < n; i++) {
 			arr[i] = kb.nextInt();
 		}
-		System.out.println(T.solution(n, arr));
+		for(int x : T.solution(n, arr)) System.out.print(x + " ");
 	}
 }
