@@ -1,52 +1,27 @@
 import java.util.*;
 
-class Person {
-	int id;
-	int priority;
-
-	public Person(int id, int priority) {
-		this.id = id;
-		this.priority = priority;
-	}
-
-}
-
 public class Main {
-	public int solution(int n, int m, int[] arr) {
-		int answer = 0;
-		Queue<Person> Q = new LinkedList<Person>();
-		for (int i = 0; i < n; i++) {
-			Q.offer(new Person(i, arr[i]));
-		}
-		while (!Q.isEmpty()) {
-			Person tmp = Q.poll();
-			for (Person x : Q) {
-				if (x.priority > tmp.priority) {
-					Q.offer(tmp);
-					tmp = null;
-					break;
-				}
+	public int[] solution(int n, int[] arr) {
+		for(int i = 0; i < n-1; i++) {
+			int idx = i;
+			for(int j = i+1; j < n; j++) {
+				if(arr[j] < arr[idx]) idx = j;
 			}
-			if (tmp != null) {
-				answer++;
-				if(tmp.id == m) return answer;
-				
-			}
-
+			int tmp = arr[i];
+			arr[i] = arr[idx];
+			arr[idx] = tmp;
 		}
-
-		return answer;
+		return arr;
 	}
 
 	public static void main(String[] args) {
 		Main M = new Main();
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
-		int m = sc.nextInt();
 		int[] arr = new int[n];
-		for (int i = 0; i < n; i++)
-			arr[i] = sc.nextInt();
-		System.out.println(M.solution(n, m, arr));
-
+		for (int i = 0; i < n; i++) arr[i] = sc.nextInt();
+		for(int x : M.solution(n, arr)) System.out.print(x + " ");
+			
+		
 	}
 }
