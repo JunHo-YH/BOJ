@@ -1,26 +1,52 @@
 import java.util.*;
 
+class Person {
+	int id;
+	int priority;
+
+	public Person(int id, int priority) {
+		this.id = id;
+		this.priority = priority;
+	}
+
+}
+
 public class Main {
-	public String solution(String s1, String s2) {
-		String answer = "YES";
-		Queue<Character> Q = new LinkedList<Character>();
-		for(char x : s1.toCharArray()) Q.offer(x);
-		for(char x : s2.toCharArray()) {
-			if(Q.contains(x)) {
-				if(Q.poll() != x) return "NO";
-			}
+	public int solution(int n, int m, int[] arr) {
+		int answer = 0;
+		Queue<Person> Q = new LinkedList<Person>();
+		for (int i = 0; i < n; i++) {
+			Q.offer(new Person(i, arr[i]));
 		}
-		if(!Q.isEmpty()) return "NO";
-		
+		while (!Q.isEmpty()) {
+			Person tmp = Q.poll();
+			for (Person x : Q) {
+				if (x.priority > tmp.priority) {
+					Q.offer(tmp);
+					tmp = null;
+					break;
+				}
+			}
+			if (tmp != null) {
+				answer++;
+				if(tmp.id == m) return answer;
+				
+			}
+
+		}
+
 		return answer;
 	}
 
 	public static void main(String[] args) {
 		Main M = new Main();
 		Scanner sc = new Scanner(System.in);
-		String s1 = sc.next();
-		String s2 = sc.next();
-		System.out.println(M.solution(s1, s2));
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		int[] arr = new int[n];
+		for (int i = 0; i < n; i++)
+			arr[i] = sc.nextInt();
+		System.out.println(M.solution(n, m, arr));
 
 	}
 }
