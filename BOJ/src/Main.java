@@ -1,27 +1,37 @@
 import java.util.*;
 
 public class Main {
-	public int[] solution(int n, int[] arr) {
-		for(int i = 0; i < n-1; i++) {
-			for(int j = 0; j < n-i-1; j++) {
-				if(arr[j+1] < arr[j]) {
-					int tmp = arr[j];
-					arr[j] = arr[j+1];
-					arr[j+1] = tmp;
+	public int[] solution(int size, int n, int[] arr) {
+		int[] cache = new int[size];
+		for(int x : arr) {
+			int pos = -1;
+			for(int i = 0; i < size; i++) if(x == cache[i]) pos = i;
+			if(pos == -1) {
+				for(int i = size-1; i >= 1; i--) {
+					cache[i] = cache[i-1];
 				}
+				cache[0] = x;
+			} else {
+				for(int i = pos; i >= 1; i--) {
+					cache[i] = cache[i-1];
+				}
+				cache[0] = x;
 			}
+		
 		}
-		return arr;
+		
+		return cache;
 	}
 
 	public static void main(String[] args) {
-		Main M = new Main();
-		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
+		Main T = new Main();
+		Scanner kb = new Scanner(System.in);
+		int s = kb.nextInt();
+		int n = kb.nextInt();
 		int[] arr = new int[n];
-		for (int i = 0; i < n; i++) arr[i] = sc.nextInt();
-		for(int x : M.solution(n, arr)) System.out.print(x + " ");
-			
-		
+		for (int i = 0; i < n; i++)
+			arr[i] = kb.nextInt();
+		for (int x : T.solution(s, n, arr))
+			System.out.print(x + " ");
 	}
 }
