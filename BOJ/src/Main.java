@@ -1,26 +1,28 @@
 import java.util.*;
-
-public class Main {
-	public ArrayList<Integer> solution(int n, int[] arr) {
-		ArrayList<Integer> answer = new ArrayList<Integer>();
-		int[] tmp = arr.clone();// arr에는 영향을 주지 않는 배열 생성
-		Arrays.sort(tmp);// 오름차순 정렬
+class Point implements Comparable<Point> {
+	public int x, y;
+	public Point(int x , int y) {
+		this.x = x;
+		this.y = y;
+	}
+	@Override
+	public int compareTo(Point o) {
+		if(this.x == o.x) return this.y - o.y; // 오름차순
+		else return this.x - o.x;
+	}
+}
+class Main {	
+	public static void main(String[] args){
+		Scanner kb = new Scanner(System.in);
+		int n=kb.nextInt();
+		ArrayList<Point> arr = new ArrayList<Point>();
 		for(int i = 0; i < n; i++) {
-			if(arr[i] != tmp[i]) answer.add(i+1);
+			int x = kb.nextInt();
+			int y = kb.nextInt();
+			arr.add(new Point(x, y));
 		}
 		
-		return answer;
-
-	}
-
-	public static void main(String[] args) {
-		Main T = new Main();
-		Scanner kb = new Scanner(System.in);
-		int n = kb.nextInt();
-		int[] arr = new int[n];
-		for (int i = 0; i < n; i++) {
-			arr[i] = kb.nextInt();
-		}
-		for(int x : T.solution(n, arr)) System.out.print(x + " ");
+		Collections.sort(arr);
+		for(Point o : arr) System.out.println(o.x+" "+o.y);
 	}
 }
