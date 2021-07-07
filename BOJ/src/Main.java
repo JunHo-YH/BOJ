@@ -7,17 +7,21 @@ public class Main {
 	public static void main(String args[]) throws IOException {
  
 		BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine()," ");
+		int n = Integer.parseInt(st.nextToken());
+		int x = Integer.parseInt(st.nextToken());
+		int[] arr = new int[n];
 		
-		int a = Integer.parseInt(br.readLine());
- 
-		StringTokenizer st;
-		for (int i = 1; i <= a; i++) {
-			st = new StringTokenizer(br.readLine()," ");
-			System.out.println("Case #" + i + ": " 
-			+(Integer.parseInt(st.nextToken())
-			+Integer.parseInt(st.nextToken())));
+		StringBuilder sb = new StringBuilder();
+		st = new StringTokenizer(br.readLine()," ");
+		for(int i = 0; i < n; i++) {
+			int value = Integer.parseInt(st.nextToken());
+			
+			if(value < x) sb.append(value).append(" ");
 		}
+		
 		br.close();
+		System.out.println(sb);
 	}
  
 }
