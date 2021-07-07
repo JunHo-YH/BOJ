@@ -1,34 +1,31 @@
-import java.util.*;
-class Node {
-	int data;
-	Node lt, rt;
-	public Node(int val) {
-		int data = val;
-		lt = rt = null;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+ 
+public class Main{
+ 
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ 
+		int A = Integer.parseInt(br.readLine());
+		int B = Integer.parseInt(br.readLine());
+		
+		br.close();
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(A * (B%10));
+		sb.append('\n');
+		
+		sb.append(A * ((B%100)/10));
+		sb.append('\n');
+        
+		sb.append(A * (B/100));
+		sb.append('\n');
+        
+		sb.append(A * B);
+ 
+		System.out.print(sb);
+        
 	}
+ 
 }
-  
-public class Main{ 
-    Node root; 
-    public void DFS(Node root){ 
-        if(root==null) 
-            return; 
-        else{
-			DFS(root.lt);
-			DFS(root.rt);
-			System.out.print(root.data+" ");
-		}
-    } 
-  
-    public static void main(String args[]) { 
-        Main tree=new Main(); 
-        tree.root=new Node(1); 
-        tree.root.lt=new Node(2); 
-        tree.root.rt=new Node(3); 
-        tree.root.lt.lt=new Node(4); 
-        tree.root.lt.rt=new Node(5); 
-		tree.root.rt.lt=new Node(6); 
-        tree.root.rt.rt=new Node(7);
-        tree.DFS(tree.root); 
-    } 
-} 
