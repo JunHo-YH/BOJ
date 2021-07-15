@@ -7,7 +7,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-    	Main T = new Main();
+    	Solution T = new Solution();
         int[] arr = {4,3,2,1};
         for(long a : T.solution(arr)) System.out.println(a);
 
