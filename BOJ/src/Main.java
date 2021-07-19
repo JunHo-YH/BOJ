@@ -10,10 +10,12 @@ public class Main {
 		String str = br.readLine();
 		String str2 = br.readLine();
 		StringBuilder sb = new StringBuilder();
+		StringBuilder sb2 = new StringBuilder();
 		int num1 = Integer.parseInt(sb.append(str).reverse().toString());
-		int num2 = Integer.parseInt(sb.append(str2).reverse().toString());
-		System.out.println(num1);
-		System.out.println(num2);
+		int num2 = Integer.parseInt(sb2.append(str2).reverse().toString());
+		System.out.println(num1 > num2 ? num1 : num2);
+	
+	
 	}
 
 }
